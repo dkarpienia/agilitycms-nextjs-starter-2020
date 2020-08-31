@@ -21,8 +21,8 @@ export default function Layout(props) {
 		return <div>Loading page...</div>
 	}
 
-	console.log("notFound", notFound)
-	if(notFound === true) {
+
+	if (notFound === true) {
 		return <Error statusCode="404" />
 	}
 
@@ -40,20 +40,20 @@ export default function Layout(props) {
 				<meta name="description" content={page.seo.metaDescription} />
 				<meta name="generator" content="Agility CMS" />
 				<meta name="agility_timestamp" content={new Date().toLocaleString()} />
-				{ dynamicPageItem?.seo?.ogImage &&
+				{dynamicPageItem?.seo?.ogImage &&
 					<meta property="og:image" content={dynamicPageItem.seo.ogImage} />
 				}
 				<link rel="stylesheet" href="/prose.css" />
 
 			</Head>
 			<PreviewBar {...props} />
-			
+
 			<MainElem>
-			{/* <AnimationRevealPage disabled> */}
+				{/* <AnimationRevealPage disabled> */}
 				<GlobalHeader {...props} />
 				<AgilityPageTemplate {...props} />
 				<GlobalFooter {...props} />
-			{/* </AnimationRevealPage> */}
+				{/* </AnimationRevealPage> */}
 			</MainElem>
 
 		</>
