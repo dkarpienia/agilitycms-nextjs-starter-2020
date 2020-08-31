@@ -15,8 +15,6 @@ const ProductListingModule = (props) => {
 		)
 	})
 
-	console.log("Prod Listing", props)
-
 	return (
 		<MainModule>
 			{products}
@@ -52,15 +50,17 @@ ProductListingModule.getCustomInitialProps = async function ({ agility, channelN
 
 
 
-		return list.map(p => {
+		return list
+			.sort((a, b) => a.properties.itemOrder - b.properties.itemOrder)
+			.map(p => {
 
 
-			return {
-				contentID: p.contentID,
-				productName: p.fields.productName,
-				url: dynamicUrls[p.contentID]
-			}
-		});
+				return {
+					contentID: p.contentID,
+					productName: p.fields.productName,
+					url: dynamicUrls[p.contentID]
+				}
+			});
 
 
 	} catch (error) {
