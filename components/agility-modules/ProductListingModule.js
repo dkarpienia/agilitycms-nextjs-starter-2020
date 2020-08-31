@@ -54,11 +54,15 @@ ProductListingModule.getCustomInitialProps = async function ({ agility, channelN
 			.sort((a, b) => a.properties.itemOrder - b.properties.itemOrder)
 			.map(p => {
 
+				let url = "#"
+				if (dynamicUrls[p.contentID]) {
+					url = dynamicUrls[p.contentID]
+				}
 
 				return {
 					contentID: p.contentID,
 					productName: p.fields.productName,
-					url: dynamicUrls[p.contentID]
+					url
 				}
 			});
 
