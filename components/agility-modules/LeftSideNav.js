@@ -5,8 +5,9 @@ const MainModule = tw.div`m-4 p-4 bg-gray-100`;
 const LeftSideNav = (props) => {
 
 	const { dynamicPageItem, customData } = props
+	let navItems = customData || []
 
-	const navItems = customData.map(n => {
+	navItems = navItems.map(n => {
 
 		let href = "#"
 		if (n.fields.link && n.fields.link.href) {

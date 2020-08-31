@@ -5,8 +5,8 @@ const MainModule = tw.div`m-4 p-4 bg-gray-100`;
 const ProductListingModule = (props) => {
 
 	const { dynamicPageItem, customData } = props
-
-	const products = customData.map(n => {
+	let products = customData || [];
+	products = products.map(n => {
 
 		return (
 			<div key={"product" + n.contentID}>
@@ -45,6 +45,8 @@ ProductListingModule.getCustomInitialProps = async function ({ agility, channelN
 
 		//get the nav items posts
 		const list = await api.getContentList({ referenceName: 'products', languageCode });
+
+		if (!list) return []
 
 		const dynamicUrls = resolvePostUrls(sitemap, list)
 
